@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Ninja</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+</head>
+<body>
+    <a href="/dojo_form">Create Dojo</a>
+    <a href="/">Dojos & Ninjas</a>
+    <h1>Add a Ninja</h1>
+        <form action="/create_ninja" method="POST">
+            {% csrf_token %}
+            <label for="first_name">First Name:</label>
+                <input type="text" name="first_name" id="first_name">
+            <label for="last_name">Last Name:</label>
+                <input type="text" name="last_name" id="last_name">
+            <label for="dojo_id">Dojo</label>    
+            <select name="dojo_id">
+                {% for dojo in dojos %}
+                    <option value="{{dojo.id}}">{{dojo.stack_type}}</option>
+                    <!-- <input type="hidden" name="dojo_id" id="dojo_id" value="{{dojo.id}}"> -->
+                {% endfor %}    
+                </select>
+            <button>Add</button>
+        </form>
+</body>
+</html>

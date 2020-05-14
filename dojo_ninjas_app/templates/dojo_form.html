@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Dojo</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+</head>
+<body>
+    <a href="/ninja_form">Create Ninja</a>
+    <a href="/">Dojos & Ninjas</a>
+    <h1>Add a Dojo</h1>
+        <form action="/create_dojo" method="POST">
+            {% csrf_token %}
+            <label for="stack_type">Stack Type:</label>
+                <input type="text" name="stack_type" id="stack_type">
+            <label for="location">City:</label>
+                <input type="text" name="location" id="location">
+            <button>Add</button>
+        </form>
+</body>
+</html>

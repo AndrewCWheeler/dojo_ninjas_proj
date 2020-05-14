@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojos & Ninjas App</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+</head>
+<body>
+    <a href="/dojo_form">Create Dojo</a>
+    <a href="/ninja_form">Create Ninja</a>
+    <h1>Dojos & Ninjas</h1>
+        <ul>
+            {% for dojo in dojos %}
+                <li>{{dojo.stack_type}}, {{dojo.location}}
+                    <ul>
+                        {% for student in dojo.students.all %}
+                            <li>{{student.first_name}} {{student.last_name}}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+</body>
+</html>
